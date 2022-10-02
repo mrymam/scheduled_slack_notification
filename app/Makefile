@@ -5,5 +5,7 @@ build:
 exec:
 	./main
 
+run: build exec
+
 test:
 	go test -v -cover -coverprofile=coverage.out ./...
