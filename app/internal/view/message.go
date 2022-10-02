@@ -16,7 +16,7 @@ func InitMessage(ntf model.Notification) (Message, error) {
 		b := SectionBlock{
 			Object: TextBlockObject{
 				TextType: TextBlockMarkdown,
-				Text:     fmt.Sprintf("name: %s", m.Name),
+				Text:     fmt.Sprintf("Metric %s is %s.", m.Name, m.Value),
 			},
 		}
 		bs = append(bs, b)
@@ -24,6 +24,7 @@ func InitMessage(ntf model.Notification) (Message, error) {
 	}
 
 	m := Message{
+
 		Blocks: bs,
 	}
 	return m, nil

@@ -16,7 +16,7 @@ func GenMessage(vmsg view.Message) slack.WebhookMessage {
 			if !ok {
 				continue
 			}
-			obj := slack.NewTextBlockObject("markdown", b.Object.Text, false, false)
+			obj := slack.NewTextBlockObject(slack.MarkdownType, b.Object.Text, false, false)
 			ib := slack.NewSectionBlock(obj, nil, nil)
 			bs = append(bs, ib)
 			continue
@@ -28,8 +28,11 @@ func GenMessage(vmsg view.Message) slack.WebhookMessage {
 			continue
 		}
 	}
+
 	m := slack.WebhookMessage{
-		Blocks: &slack.Blocks{bs},
+		Blocks: &slack.Blocks{
+			BlockSet: bs,
+		},
 	}
 	return m
 }
