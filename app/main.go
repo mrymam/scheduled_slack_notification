@@ -1,14 +1,9 @@
 package main
 
 import (
-	"github.com/onyanko-pon/scheduled_slack_notification/app/pkg/infra/slack"
+	"fmt"
 )
 
 func main() {
-
-	clt := slack.ClientImpl{}
-	msg := slack.Message{
-		Text: "hello world",
-	}
-	clt.PostMessage("url", msg)
+	fmt.Println("hello world")
 }
