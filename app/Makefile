@@ -17,6 +17,6 @@ dev:
 	make run schedule=weekly
 
 test:
-		docker-compose run --rm \
+	docker-compose run --rm \
 	-e GO_ENV=test dev \
 	go test -v -cover -coverprofile=coverage.out ./...
