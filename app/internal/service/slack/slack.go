@@ -6,15 +6,14 @@ import (
 )
 
 type Service interface {
-	PostMessage(msg view.Message) error
+	PostMessage(url string, msg view.Message) error
 }
 
 type ServiceImpl struct {
-	url string
 	clt slack.Client
 }
 
-func (c ServiceImpl) PostMessage(vmsg view.Message) error {
+func (c ServiceImpl) PostMessage(url string, vmsg view.Message) error {
 	msg := vmsg.GenWebHookMessage()
-	return c.clt.PostMessage(c.url, msg)
+	return c.clt.PostMessage(url, msg)
 }

@@ -1,5 +1,6 @@
 notifications:
-  - webhook_url: "url"
+  - name: "weekly_report_fourkeys"
+    webhook_url: "url"
     schedule:
       name: "weekly"
       description: "every Monday at 9:00"

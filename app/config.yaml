@@ -1,5 +1,6 @@
 notifications:
-  - webhook_url: "${SLACK_WEBHOOK_URL}"
+  - name: "weekly_report_fourkeys"
+    webhook_url: "${SLACK_WEBHOOK_URL}"
     schedule:
       name: "weekly"
       description: "every Monday at 9:00"

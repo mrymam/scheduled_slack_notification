@@ -5,7 +5,7 @@ import (
 	"github.com/onyanko-pon/scheduled_slack_notification/app/pkg/config"
 )
 
-func Init(url string) (Service, error) {
+func Init() (Service, error) {
 	var clt slack.Client
 
 	if config.GetEnv().IsProd() || config.GetEnv().IsDev() {
@@ -15,7 +15,6 @@ func Init(url string) (Service, error) {
 	}
 
 	return ServiceImpl{
-		url: url,
 		clt: clt,
 	}, nil
 }
