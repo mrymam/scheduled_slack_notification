@@ -1,10 +1,18 @@
 package config
 
-import "os"
+import (
+	"log"
+
+	"github.com/joho/godotenv"
+)
 
 func init() {
-	e := os.Getenv("GO_ENV")
-	env = Env{
-		value: EnvValue(e),
+	loadEnv()
+	if !GetEnv().IsTest() {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file")
+		}
 	}
+	loadGCP()
 }

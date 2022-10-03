@@ -1,5 +1,7 @@
 package config
 
+import "os"
+
 type EnvValue string
 
 const (
@@ -28,4 +30,11 @@ func (e Env) IsTest() bool {
 
 func GetEnv() Env {
 	return env
+}
+
+func loadEnv() {
+	e := os.Getenv("GO_ENV")
+	env = Env{
+		value: EnvValue(e),
+	}
 }
