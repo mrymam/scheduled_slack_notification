@@ -2,12 +2,13 @@ package slack
 
 import (
 	"github.com/onyanko-pon/scheduled_slack_notification/app/internal/infra/slack"
-	"github.com/onyanko-pon/scheduled_slack_notification/app/pkg/setting"
+	"github.com/onyanko-pon/scheduled_slack_notification/app/pkg/config"
 )
 
 func Init(url string) (Service, error) {
 	var clt slack.Client
-	if setting.GetEnv().IsProd() {
+
+	if config.GetEnv().IsProd() {
 		clt = slack.ClientImpl{}
 	} else {
 		clt = slack.ClientDevImpl{}

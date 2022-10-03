@@ -1,4 +1,4 @@
-package setting
+package config
 
 type EnvValue string
 

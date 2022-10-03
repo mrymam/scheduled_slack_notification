@@ -1,0 +1,11 @@
+notifications:
+  - webhook_url: "url"
+    schedule:
+      name: "weekly"
+      description: "every Monday at 9:00"
+      cron: "0 9 * * 1"
+    metrics:
+      - name: "frequency"
+        description: "deployments frequency"
+        query:
+          filepath: "frequency.sql"
