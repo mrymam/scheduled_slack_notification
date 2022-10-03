@@ -1,8 +1,10 @@
 package setting
 
 import (
+	"log"
 	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/onyanko-pon/scheduled_slack_notification/app/pkg/config"
 	"gopkg.in/yaml.v3"
 )
@@ -10,6 +12,11 @@ import (
 var setting Setting
 
 func init() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	filepath := getFilepath()
 	buf, err := os.ReadFile(filepath)
 	if err != nil {

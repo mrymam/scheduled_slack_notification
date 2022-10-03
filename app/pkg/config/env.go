@@ -19,7 +19,7 @@ func (e Env) IsProd() bool {
 }
 
 func (e Env) IsDev() bool {
-	return e.value == EnvProd
+	return e.value == EnvDev
 }
 
 func GetEnv() Env {

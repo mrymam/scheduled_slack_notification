@@ -1,21 +1,22 @@
 package main
 
 import (
-	"fmt"
+	"context"
 	"log"
 
-	"github.com/joho/godotenv"
+	"github.com/onyanko-pon/scheduled_slack_notification/app/internal/setting"
+	"github.com/onyanko-pon/scheduled_slack_notification/app/internal/usecase"
 )
 
 func main() {
-	loadenv()
-
-	fmt.Println("hello world")
-}
-
-func loadenv() {
-	err := godotenv.Load()
+	ctx := context.Background()
+	us, err := usecase.InitSendNotification()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		log.Fatal(err)
+	}
+	sntf := setting.Get().Notifications[0]
+	err = us.Do(ctx, sntf)
+	if err != nil {
+		log.Fatal(err)
 	}
 }

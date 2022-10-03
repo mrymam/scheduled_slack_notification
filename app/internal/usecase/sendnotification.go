@@ -9,7 +9,9 @@ import (
 	"github.com/onyanko-pon/scheduled_slack_notification/app/internal/view"
 )
 
-type SendNotification interface{}
+type SendNotification interface {
+	Do(context.Context, setting.Notification) error
+}
 
 func InitSendNotification() (SendNotification, error) {
 	svc, err := slack.Init()
