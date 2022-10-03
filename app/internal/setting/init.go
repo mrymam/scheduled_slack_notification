@@ -28,8 +28,8 @@ func Get() Setting {
 }
 
 func getFilepath() string {
-	if config.GetEnv().IsProd() {
-		return "../../config.yaml"
+	if config.GetEnv().IsProd() || config.GetEnv().IsDev() {
+		return "config.yaml"
 	}
 	return "test.yaml"
 }

@@ -1,5 +1,5 @@
 notifications:
-  - webhook_url: "url"
+  - webhook_url: "${SLACK_WEBHOOK_URL}"
     schedule:
       name: "weekly"
       description: "every Monday at 9:00"

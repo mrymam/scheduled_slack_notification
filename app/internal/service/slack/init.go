@@ -8,7 +8,7 @@ import (
 func Init(url string) (Service, error) {
 	var clt slack.Client
 
-	if config.GetEnv().IsProd() {
+	if config.GetEnv().IsProd() || config.GetEnv().IsDev() {
 		clt = slack.ClientImpl{}
 	} else {
 		clt = slack.ClientDevImpl{}
