@@ -15,6 +15,6 @@ type ServiceImpl struct {
 }
 
 func (c ServiceImpl) PostMessage(vmsg view.Message) error {
-	msg := slack.GenMessage(vmsg)
+	msg := vmsg.GenWebHookMessage()
 	return c.clt.PostMessage(c.url, msg)
 }
