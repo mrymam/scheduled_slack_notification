@@ -1,6 +1,6 @@
 resource "google_container_registry" "registry" {
   project  = var.project
-  location = var.region
+  location = "ASIA"
 }
 
 module "gcloud" {
@@ -11,7 +11,7 @@ module "gcloud" {
   additional_components = []
 
   create_cmd_entrypoint  = "gcloud"
-  create_cmd_body        = "builds submit ./sample --tag=gcr.io/${var.project}/${var.image_name} --region ${var.region}"
+  create_cmd_body        = "builds submit ${var.build_path} --tag=gcr.io/${var.project}/${var.image_name}"
   destroy_cmd_entrypoint = "gcloud"
   destroy_cmd_body       = "container images delete --tag=gcr.io/${var.project}/${var.image_name}"
 }

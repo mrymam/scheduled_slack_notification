@@ -8,3 +8,6 @@ init-all:
 
 plan-all:
 	terraform -chdir=resources/main/image/ plan -var-file ../../../terraform.tfvars
+
+apply-all:
+	terraform -chdir=resources/main/image/ apply -var-file ../../../terraform.tfvars

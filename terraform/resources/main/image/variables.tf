@@ -5,3 +5,7 @@ variable "project" {
 variable "region" {
   type = string
 }
+
+variable "gcr_location" {
+  type = string
+}
