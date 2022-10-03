@@ -1,7 +1,7 @@
 module "image" {
   source = "../../../modules/image_registory"
 
-  project    = ""
-  region     = ""
-  image_name = ""
+  project    = var.project
+  region     = var.region
+  image_name = "notification"
 }
