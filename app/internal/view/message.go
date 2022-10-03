@@ -11,7 +11,7 @@ type Message struct {
 	Blocks []Block
 }
 
-func InitMessage(ntf model.Notification) (Message, error) {
+func GenMessage(ntf model.Notification) (Message, error) {
 	bs := []Block{}
 	for _, m := range ntf.Metrics {
 		b := SectionBlock{
