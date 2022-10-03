@@ -2,17 +2,17 @@
 build:
 	go build -o ./main ./main.go
 
-exec: name=
+exec: schedule=
 exec:
-	./main $(name)
+	./main $(schedule)
 
-run: name=
+run: schedule=
 run:
 	make build
-	make exec name=$(name)
+	make exec schedule=$(schedule)
 
 dev:
-	GO_ENV=dev make run name=weekly_report_fourkeys
+	GO_ENV=dev make run schedule=weekly
 
 test:
 	GO_ENV=test go test -v -cover -coverprofile=coverage.out ./...

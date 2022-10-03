@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"embed"
 	"fmt"
 	"log"
 	"os"
@@ -10,12 +9,6 @@ import (
 	"github.com/onyanko-pon/scheduled_slack_notification/app/internal/setting"
 	"github.com/onyanko-pon/scheduled_slack_notification/app/internal/usecase"
 )
-
-// go:embed queries/*
-var QueryFiles embed.FS
-
-// go:embed setting/*
-var SettingFiles embed.FS
 
 func main() {
 	ctx := context.Background()
@@ -25,26 +18,25 @@ func main() {
 	}
 
 	if len(os.Args) < 2 {
-		log.Fatal(fmt.Errorf("notification not selected"))
+		log.Fatal(fmt.Errorf("notification schedule is not setted"))
 	}
 
-	ntfName := os.Args[1]
-	sntf, err := filterNotification(setting.Get().Notifications, ntfName)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = us.Do(ctx, sntf)
-	if err != nil {
-		log.Fatal(err)
+	schedule := os.Args[1]
+	ns := filterNotifications(setting.Get().Notifications, schedule)
+	for _, n := range ns {
+		err = us.Do(ctx, n)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 }
 
-func filterNotification(ntfs []setting.Notification, name string) (setting.Notification, error) {
-	for _, ntf := range ntfs {
-		if ntf.Name == name {
-			return ntf, nil
+func filterNotifications(ns []setting.Notification, schedule string) []setting.Notification {
+	fns := []setting.Notification{}
+	for _, n := range ns {
+		if n.Schedule == schedule {
+			fns = append(fns, n)
 		}
 	}
-	return setting.Notification{}, fmt.Errorf("notification: %s is not found", name)
+	return fns
 }

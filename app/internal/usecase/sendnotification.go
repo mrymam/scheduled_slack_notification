@@ -55,11 +55,8 @@ func (s SendNotificationImple) Do(ctx context.Context, sntf setting.Notification
 	ntf := model.Notification{
 		Name:       sntf.Name,
 		WebhookURL: sntf.WebhookURL,
-		Schedule: model.Schedule{
-			Name:        sntf.Schedule.Name,
-			Description: sntf.Schedule.Description,
-		},
-		Metrics: ms,
+		Schedule:   sntf.Schedule,
+		Metrics:    ms,
 	}
 
 	msg, err := view.GenMessage(ntf)

@@ -7,13 +7,8 @@ type Setting struct {
 type Notification struct {
 	Name       string   `yaml:"name"`
 	WebhookURL string   `yaml:"webhook_url"`
-	Schedule   Schedule `yaml:"schedule"`
+	Schedule   string   `yaml:"schedule"`
 	Metrics    []Metric `yaml:"metrics"`
-}
-
-type Schedule struct {
-	Name        string `yaml:"name"`
-	Description string `yaml:"description"`
 }
 
 type Metric struct {

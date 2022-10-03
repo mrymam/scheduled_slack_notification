@@ -1,13 +1,15 @@
 notifications:
   - name: "weekly_report_fourkeys"
     webhook_url: "${SLACK_WEBHOOK_URL}"
-    schedule:
-      name: "weekly"
-      description: "every Monday at 9:00"
-      cron: "0 9 * * 1"
+    schedule: "weekly"
     metrics:
       - name: "frequency"
         description: "deployments frequency"
         query:
           filename: "frequency.sql"
           key: "frequency"
+
+schedules:
+  - name: "weekly"
+    description: "every Monday at 9:00"
+    cron: "0 9 * * 1"
