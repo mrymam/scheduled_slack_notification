@@ -12,7 +12,11 @@ run:
 	make exec schedule=$(schedule)
 
 dev:
-	GO_ENV=dev make run schedule=weekly
+	docker-compose run --rm \
+	-e GO_ENV=dev dev \
+	make run schedule=weekly
 
 test:
-	GO_ENV=test go test -v -cover -coverprofile=coverage.out ./...
+		docker-compose run --rm \
+	-e GO_ENV=test dev \
+	go test -v -cover -coverprofile=coverage.out ./...

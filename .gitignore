@@ -1,3 +1,4 @@
 app/main
 app/coverage.out
 app/.env
+app/gcp_credentials.json

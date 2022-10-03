@@ -2,10 +2,8 @@ package setting
 
 import (
 	"embed"
-	"log"
 	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/onyanko-pon/scheduled_slack_notification/app/pkg/config"
 	"gopkg.in/yaml.v3"
 )
@@ -18,13 +16,6 @@ var (
 var setting Setting
 
 func init() {
-	if !config.GetEnv().IsTest() {
-		err := godotenv.Load()
-		if err != nil {
-			log.Fatal("Error loading .env file")
-		}
-	}
-
 	filepath := getFilepath()
 	buf, err := files.ReadFile(filepath)
 	if err != nil {
