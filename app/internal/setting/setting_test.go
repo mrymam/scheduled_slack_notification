@@ -23,18 +23,19 @@ func Test_LoadSetting(t *testing.T) {
 		m := ntf.Metrics[0]
 		assert.Equal(t, m.Name, "frequency")
 		assert.Equal(t, m.Description, "deployments frequency")
-		assert.Equal(t, m.Query.Filepath, "frequency.sql")
+		assert.Equal(t, m.Query.Filename, "test.sql")
 	})
 }
 
-// - name: "weekly_report_fourkeys"
-//   webhook_url: "url"
-//   schedule:
-//     name: "weekly"
-//     description: "every Monday at 9:00"
-//     cron: "0 9 * * 1"
-//   metrics:
-//     - name: "frequeny"
-//       description: "deployments frequency"
-//       query:
-//         filepath: "query/frequency.sql"
+// notifications:
+//   - name: "weekly_report_fourkeys"
+//     webhook_url: "url"
+//     schedule:
+//       name: "weekly"
+//       description: "every Monday at 9:00"
+//       cron: "0 9 * * 1"
+//     metrics:
+//       - name: "frequency"
+//         description: "deployments frequency"
+//         query:
+//           filename: "test.sql"

@@ -23,5 +23,5 @@ type Metric struct {
 }
 
 type Query struct {
-	Filepath string `yaml:"filepath"`
+	Filename string `yaml:"filename"`
 }

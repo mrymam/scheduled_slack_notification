@@ -9,4 +9,4 @@ notifications:
       - name: "frequency"
         description: "deployments frequency"
         query:
-          filepath: "query/frequency.sql"
+          filename: "frequency.sql"
