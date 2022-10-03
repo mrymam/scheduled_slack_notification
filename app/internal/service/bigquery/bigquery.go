@@ -7,25 +7,21 @@ import (
 )
 
 type Service interface {
-	Read(query string) (string, error)
+	Read(query string, key string) (interface{}, error)
 }
 
 type ServiceImpl struct {
 	clt bigquery.Client
 }
 
-func (c ServiceImpl) Read(query string) (string, error) {
-	vs, err := c.clt.Read(query)
+func (c ServiceImpl) Read(query string, key string) (interface{}, error) {
+	m, err := c.clt.Read(query)
 	if err != nil {
 		return "", err
 	}
-	if len(vs) == 0 {
-		return "", fmt.Errorf("lenght 0")
-	}
-
-	v, ok := vs[0].(string)
+	v, ok := m[key]
 	if !ok {
-		return "", fmt.Errorf("cast error")
+		return "", fmt.Errorf("key not found: %s", key)
 	}
 	return v, nil
 }

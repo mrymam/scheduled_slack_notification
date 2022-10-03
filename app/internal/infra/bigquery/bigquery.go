@@ -8,7 +8,7 @@ import (
 )
 
 type Client interface {
-	Read(query string) ([]bigquery.Value, error)
+	Read(query string) (map[string]bigquery.Value, error)
 }
 
 type ClientImpl struct {
@@ -27,7 +27,7 @@ func InitClient() (Client, error) {
 	}, nil
 }
 
-func (c ClientImpl) Read(query string) ([]bigquery.Value, error) {
+func (c ClientImpl) Read(query string) (map[string]bigquery.Value, error) {
 	ctx := context.Background()
 
 	it, err := c.clt.Query(query).Read(ctx)
@@ -35,11 +35,11 @@ func (c ClientImpl) Read(query string) ([]bigquery.Value, error) {
 		return nil, err
 	}
 
-	var values []bigquery.Value
-	err = it.Next(&values)
+	var m map[string]bigquery.Value
+	err = it.Next(&m)
 	if err != nil {
 		return nil, err
 	}
 
-	return values, nil
+	return m, nil
 }

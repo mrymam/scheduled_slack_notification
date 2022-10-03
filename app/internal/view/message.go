@@ -14,10 +14,14 @@ type Message struct {
 func GenMessage(ntf model.Notification) (Message, error) {
 	bs := []Block{}
 	for _, m := range ntf.Metrics {
+		v, err := m.GetValueStr()
+		if err != nil {
+			continue
+		}
 		b := SectionBlock{
 			Object: TextBlockObject{
 				TextType: TextBlockMarkdown,
-				Text:     fmt.Sprintf("Metric %s is %s.", m.Name, m.Value),
+				Text:     fmt.Sprintf("Metric %s is %s.", m.Name, v),
 			},
 		}
 		bs = append(bs, b)

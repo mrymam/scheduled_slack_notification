@@ -10,3 +10,4 @@ notifications:
         description: "deployments frequency"
         query:
           filename: "frequency.sql"
+          key: "frequency"
