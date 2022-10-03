@@ -22,6 +22,10 @@ func (e Env) IsDev() bool {
 	return e.value == EnvDev
 }
 
+func (e Env) IsTest() bool {
+	return e.value == EnvTest
+}
+
 func GetEnv() Env {
 	return env
 }

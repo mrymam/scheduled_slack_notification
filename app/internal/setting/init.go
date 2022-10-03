@@ -1,6 +1,7 @@
 package setting
 
 import (
+	"embed"
 	"log"
 	"os"
 
@@ -9,16 +10,23 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+var (
+	//go:embed files/*.yaml
+	files embed.FS
+)
+
 var setting Setting
 
 func init() {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading .env file")
+	if !config.GetEnv().IsTest() {
+		err := godotenv.Load()
+		if err != nil {
+			log.Fatal("Error loading .env file")
+		}
 	}
 
 	filepath := getFilepath()
-	buf, err := os.ReadFile(filepath)
+	buf, err := files.ReadFile(filepath)
 	if err != nil {
 		panic(err)
 	}
@@ -36,7 +44,7 @@ func Get() Setting {
 
 func getFilepath() string {
 	if config.GetEnv().IsProd() || config.GetEnv().IsDev() {
-		return "config.yaml"
+		return "files/setting.yaml"
 	}
-	return "test.yaml"
+	return "files/test.yaml"
 }
