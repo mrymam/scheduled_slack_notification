@@ -2,21 +2,25 @@
 build:
 	go build -o ./main ./main.go
 
-exec: schedule=
 exec:
-	./main $(schedule)
+	./main
 
-run: schedule=
 run:
 	make build
-	make exec schedule=$(schedule)
+	make exec
+
+cp-files:
+	cp ../setting/sample.yaml internal/setting/files/setting.yaml
+	cp ../query/sample.sql internal/query/files/sample.sql
 
 dev:
+	make cp-files
 	docker-compose run --rm \
 	-e GO_ENV=dev dev \
-	make run schedule=weekly
+	make run
 
 test:
+	make cp-files
 	docker-compose run --rm \
 	-e GO_ENV=test dev \
 	go test -v -cover -coverprofile=coverage.out ./...

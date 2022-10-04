@@ -5,11 +5,12 @@ services:
     build:
       context: .
       dockerfile: docker/dev.Dockerfile
-    # command: make dev
     env_file:
       - .env
     environment:
       - GO_ENV
     volumes:
       - .:/go/src/app
+      # - ../setting/sample.yaml:/go/src/app/internal/setting/files/setting.yaml
+      # - ../query/sample.sql:/go/src/app/internal/query/files/sample.sql
     working_dir: /go/src/app
