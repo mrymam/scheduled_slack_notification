@@ -17,5 +17,5 @@ module "gcloud" {
   create_cmd_entrypoint  = "gcloud"
   create_cmd_body        = "builds submit ${var.build_path} --tag=${local.image_url}"
   destroy_cmd_entrypoint = "gcloud"
-  destroy_cmd_body       = "container images delete --tag=${local.image_url} --quiet"
+  destroy_cmd_body       = "container images delete ${local.image_url} --quiet"
 }

@@ -13,3 +13,7 @@ variable "image_url" {
 variable "jobname" {
   type = string
 }
+
+variable "schedule" {
+  type = string
+}
