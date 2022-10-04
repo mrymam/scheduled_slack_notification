@@ -17,11 +17,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	if len(os.Args) < 2 {
+	schedule := os.Getenv("SCHEDULE")
+	if schedule == "" {
 		log.Fatal(fmt.Errorf("notification schedule is not setted"))
 	}
+	fmt.Printf("exec schedule: %s\n", schedule)
 
-	schedule := os.Args[1]
 	ns := filterNotifications(setting.Get().Notifications, schedule)
 	for _, n := range ns {
 		err = us.Do(ctx, n)
