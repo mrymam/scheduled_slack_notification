@@ -1,6 +1,8 @@
 FROM golang:1.19 as builder
 RUN mkdir /build
-COPY . /build/
+COPY app /build/
+COPY query/*.sql /build/internal/query/files/
+COPY setting/*.yaml /build/internal/setting/files/
 WORKDIR /build
 RUN CGO_ENABLED=0 GO111MODULE=on go build -o ./main ./main.go
 

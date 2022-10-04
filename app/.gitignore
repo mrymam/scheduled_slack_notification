@@ -2,3 +2,8 @@ internal/query/files/*.sql
 !internal/query/files/test.sql
 internal/setting/files/*.yaml
 !internal/setting/files/test.yaml
+
+main
+coverage.out
+.env
+gcp_credentials.json
