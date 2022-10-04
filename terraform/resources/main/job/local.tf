@@ -1,3 +1,3 @@
 locals {
-  schedules = yamldecode(file("../../../schedules.yaml"))["schedules"]
+  schedules = yamldecode(file("../../../../setting/setting.yaml"))["schedules"]
 }

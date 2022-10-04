@@ -1,3 +1,3 @@
 locals {
-  secrets = yamldecode(file("../../../schedules.yaml"))["secrets"]
+  secrets = yamldecode(file("../../../../setting/setting.yaml"))["secrets"]
 }
