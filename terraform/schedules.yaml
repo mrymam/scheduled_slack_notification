@@ -1,0 +1,4 @@
+
+- name: weekly
+  description: weekly report
+  cron: "0 9 * * 1"
