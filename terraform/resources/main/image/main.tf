@@ -3,7 +3,7 @@ module "image" {
 
   project    = var.project
   region     = var.region
-  image_name = "notification"
+  image_name = "${var.common_prefix}notification"
   build_path = "./sample"
   gcr_location = var.gcr_location
 }
