@@ -14,6 +14,9 @@ module "jobs" {
     for d in local.schedules : d.name => {
       name = d.name
       resource_name = "${var.common_prefix}${d.name}"
+      secrets = {
+        for key, secret in d.secrets : key => "${var.common_prefix}${secret}"
+      }
     }
   }
 
@@ -21,5 +24,9 @@ module "jobs" {
   region    = var.region
   image_url = data.terraform_remote_state.image.outputs.image_url
   jobname   = each.value.resource_name
-  schedule  = each.value.name
+  env_vars  = {
+    "SCHEDULE": each.value.name,
+    "GCP_PROJECT_ID": var.project,
+  }
+  secrets = each.value.secrets
 }

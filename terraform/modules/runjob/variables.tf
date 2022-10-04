@@ -14,6 +14,10 @@ variable "jobname" {
   type = string
 }
 
-variable "schedule" {
-  type = string
+variable "env_vars" {
+  type = map(string)
+}
+
+variable "secrets" {
+  type = map(string)
 }

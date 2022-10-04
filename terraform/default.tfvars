@@ -1,5 +1,5 @@
 common_prefix = "slack-notification-"
 region        = "asia-northeast1"
-project       = ""
 gcr_location  = "ASIA"
+project       = ""
 bucket        = ""
