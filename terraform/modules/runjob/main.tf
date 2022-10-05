@@ -9,6 +9,9 @@ module "gcloud" {
 
   platform = "linux"
   additional_components = ["beta"]
+  skip_download = true
+  enabled       = true
+  upgrade       = false
 
   create_cmd_entrypoint  = "gcloud"
   create_cmd_body        = "beta run jobs create ${var.jobname} --image=${var.image_url} --set-env-vars=${local.env_vars_str} --set-secrets=${local.secrets_str} --project ${var.project} --region ${var.region} --quiet"

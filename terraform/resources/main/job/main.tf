@@ -42,7 +42,7 @@ module "jobs" {
     for key, secret in local.secrets : key => "${local.common_prefix}${secret}"
   }
 
-  depends_on = [
-    google_project_iam_member.secret
-  ]
+  # depends_on = [
+  #   google_project_iam_member.secret
+  # ]
 }
