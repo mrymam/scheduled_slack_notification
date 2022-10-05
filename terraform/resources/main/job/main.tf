@@ -26,6 +26,7 @@ module "jobs" {
   jobname   = each.value.resource_name
   env_vars  = {
     "SCHEDULE": each.value.name,
+    "GO_ENV": "prod"
     "GCP_PROJECT_ID": var.project,
   }
   secrets = each.value.secrets

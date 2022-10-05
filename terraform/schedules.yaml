@@ -1,9 +1,0 @@
-schedules:
-  - name: weekly
-    description: weekly report
-    cron: "0 9 * * 1"
-    secrets:
-      SLACK_WEBHOOK_URL: "slack-webhook-url"
-
-secrets:
-  - slack-webhook-url
