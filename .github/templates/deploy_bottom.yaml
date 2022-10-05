@@ -1,13 +1,5 @@
 #@ load("@ytt:data", "data")
 ---
-name: deploy
-
-"on":
-  push:
-    branches:
-      - main
-  workflow_dispatch: ""
-
 jobs:
   deploy:
     name: Deploy
@@ -24,7 +16,6 @@ jobs:
         uses: "google-github-actions/setup-gcloud@v0"
         with:
           install_components: "beta"
-
       - name: build and push
         id: build_push
         uses: ./.github/actions/build_push_image
