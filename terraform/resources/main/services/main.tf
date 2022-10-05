@@ -6,7 +6,8 @@ locals {
     "cloudscheduler.googleapis.com",
     "run.googleapis.com",
     "containerregistry.googleapis.com",
-    "compute.googleapis.com",
+    "compute.googleapis.com",,
+    "iam.googleapis.com"
   ]
 }
 
