@@ -9,13 +9,9 @@ resource "google_secret_manager_secret" "secrets" {
 }
 
 resource "google_secret_manager_secret_version" "secret_versions" {
-  for_each = {
-    for secret in google_secret_manager_secret.secrets : secret.id => {
-      secret_id: secret.id
-    }
-  }
+  for_each = google_secret_manager_secret.secrets
 
-  secret = each.value.secret_id
+  secret = each.value.id
   secret_data = "change-me"
 
   depends_on = [
