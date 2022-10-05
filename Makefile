@@ -1,5 +1,5 @@
 init-terraform:
-	echo "bucket=$$(yq '.terraform.bucket' setting.yaml)" > terraform/.tfbackend
+	echo bucket=\"$$(yq '.terraform.bucket' setting.yaml)\" > terraform/.tfbackend
 
 update-github-actions:
 	ytt -f .github/templates/deploy_bottom.yaml --data-values-file setting.yaml > tmp.yaml
