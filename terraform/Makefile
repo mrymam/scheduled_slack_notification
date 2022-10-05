@@ -1,6 +1,6 @@
 init: rsrc=
 init:
-	terraform -chdir=resources/main/$(rsrc) init -backend-config="./tfbackend"
+	terraform -chdir=resources/main/$(rsrc) init -backend-config="./.tfbackend"
 
 init-all:
 	make init rsrc=services
