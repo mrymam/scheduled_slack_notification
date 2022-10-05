@@ -3,30 +3,30 @@ init:
 	terraform -chdir=resources/main/$(rsrc) init
 
 init-all:
-	make init rsc=services
-	make init rsc=image
-	make init rsc=secrets
-	make init rsc=job
-	make init rsc=schedule
+	make init rsrc=services
+	make init rsrc=image
+	make init rsrc=secrets
+	make init rsrc=job
+	make init rsrc=schedule
 
 plan: rsrc=
 plan:
 	terraform -chdir=resources/main/$(rsrc) plan
 
 plan-all:
-	make plan rsc=services
-	make plan rsc=image
-	make plan rsc=secrets
-	make plan rsc=job
-	make plan rsc=schedule
+	make plan rsrc=services
+	make plan rsrc=image
+	make plan rsrc=secrets
+	make plan rsrc=job
+	make plan rsrc=schedule
 
 apply: rsrc=
 apply:
 	terraform -chdir=resources/main/$(rsrc) apply -auto-approve
 
 apply-all:
-	make apply rsc=services
-	make apply rsc=image
-	make apply rsc=secrets
-	make apply rsc=job
-	make apply rsc=schedule
+	make apply rsrc=services
+	make apply rsrc=image
+	make apply rsrc=secrets
+	make apply rsrc=job
+	make apply rsrc=schedule
