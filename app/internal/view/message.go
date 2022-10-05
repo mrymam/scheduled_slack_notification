@@ -29,7 +29,6 @@ func GenMessage(ntf model.Notification) (Message, error) {
 	}
 
 	m := Message{
-
 		Blocks: bs,
 	}
 	return m, nil

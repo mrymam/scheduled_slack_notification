@@ -25,6 +25,7 @@ func main() {
 
 	ns := filterNotifications(setting.Get().Notifications, schedule)
 	for _, n := range ns {
+		fmt.Printf("notification %s exec\n", n.Name)
 		err = us.Do(ctx, n)
 		if err != nil {
 			log.Fatal(err)

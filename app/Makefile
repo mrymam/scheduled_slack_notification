@@ -10,7 +10,7 @@ run:
 	make exec
 
 cp-files:
-	cp ../setting/setting.yaml internal/setting/files/setting.yaml
+	cp ../setting.yaml internal/setting/files/setting.yaml
 	cp ../query/sample.sql internal/query/files/sample.sql
 
 dev:
