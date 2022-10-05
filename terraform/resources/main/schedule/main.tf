@@ -20,8 +20,4 @@ resource "google_cloud_scheduler_job" "schedules" {
       service_account_email = data.google_compute_default_service_account.default.email
     }
   }
-
-  depends_on = [
-    google_project_iam_member.secret
-  ]
 }
