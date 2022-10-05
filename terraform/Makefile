@@ -1,19 +1,32 @@
-
-init-tfvers:
-	cp default.tfvars terraform.tfvars
-	cp default.tfbackend terraform.tfbackend
+init: rsrc=
+init:
+	terraform -chdir=resources/main/$(rsrc) init
 
 init-all:
-	terraform -chdir=resources/main/image/ init -reconfigure -backend-config=../../../terraform.tfbackend
-	terraform -chdir=resources/main/job/ init -reconfigure -backend-config=../../../terraform.tfbackend
-	terraform -chdir=resources/main/schedule/ init -reconfigure -backend-config=../../../terraform.tfbackend
+	make init rsc=services
+	make init rsc=image
+	make init rsc=secrets
+	make init rsc=job
+	make init rsc=schedule
+
+plan: rsrc=
+plan:
+	terraform -chdir=resources/main/$(rsrc) plan
 
 plan-all:
-	terraform -chdir=resources/main/image/ plan -var-file ../../../terraform.tfvars
-	terraform -chdir=resources/main/job/ plan -var-file ../../../terraform.tfvars
-	terraform -chdir=resources/main/schedule/ plan -var-file ../../../terraform.tfvars
+	make plan rsc=services
+	make plan rsc=image
+	make plan rsc=secrets
+	make plan rsc=job
+	make plan rsc=schedule
+
+apply: rsrc=
+apply:
+	terraform -chdir=resources/main/$(rsrc) apply -auto-approve
 
 apply-all:
-	terraform -chdir=resources/main/image/ apply -var-file ../../../terraform.tfvars
-	terraform -chdir=resources/main/job/ apply -var-file ../../../terraform.tfvars
-	terraform -chdir=resources/main/schedule/ apply -var-file ../../../terraform.tfvars
+	make apply rsc=services
+	make apply rsc=image
+	make apply rsc=secrets
+	make apply rsc=job
+	make apply rsc=schedule

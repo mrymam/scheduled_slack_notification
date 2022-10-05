@@ -22,4 +22,4 @@ terraform:
   gcr_location: "ASIA"
   region: "asia-northeast1"
   bucket: "slack_notifiation"
-  project: "slack_notifiation"
+  project: "slack-notifiation"
