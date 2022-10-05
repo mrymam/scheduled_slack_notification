@@ -59,7 +59,7 @@ func (s SendNotificationImple) Do(ctx context.Context, sntf setting.Notification
 		Metrics:    ms,
 	}
 
-	msg, err := view.GenMessage(ntf)
+	msg, err := view.GenMessage(ntf, sntf.Template)
 	if err != nil {
 		return err
 	}

@@ -1,7 +1,7 @@
-# fourkeys reports
+fourkeys reports
 
-## Deployments Frequency
-{{ .frequency }} / week
+*Deployments Frequency*
+{{ .Metrics.frequency }} / week
 
-## Leadtime for Change
+*Leadtime for Change*
 10 h
