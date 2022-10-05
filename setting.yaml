@@ -17,6 +17,7 @@ schedules:
 secrets:
   - SLACK_WEBHOOK_URL: slack-webhook-url
 
+
 terraform:
   common_prefix: "slack-notification-"
   gcr_location: "ASIA"

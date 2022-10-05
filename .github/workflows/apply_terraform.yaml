@@ -1,12 +1,6 @@
 name: terraform-apply-all
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  #   paths:
-  #     - terraform/**
-  #     - setting.yaml
   workflow_dispatch:
 
 jobs:
