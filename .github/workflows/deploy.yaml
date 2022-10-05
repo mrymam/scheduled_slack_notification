@@ -1,9 +1,9 @@
 name: deploy
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
 jobs:
   deploy:
@@ -25,12 +25,12 @@ jobs:
       id: build_push
       uses: ./.github/actions/build_push_image
       with:
-        image_url: gcr.io/slack_notifiation/slack-notification-notification
+        image_url: gcr.io/slack-notifiation/slack-notification-notification
         dockerfile_path: ./app/docker/Dockerfile
         build_path: .
     - name: update cloud run job of weekly
       uses: ./.github/actions/update_cloudrunjob
       with:
         jobname: slack-notification-weekly
-        project: slack_notifiation
+        project: slack-notifiation
         region: asia-northeast1
