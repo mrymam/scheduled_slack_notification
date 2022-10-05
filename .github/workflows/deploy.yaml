@@ -1,9 +1,9 @@
 name: deploy
-true:
+"on":
   push:
     branches:
     - main
-  workflow_dispatch: null
+  workflow_dispatch: ""
 jobs:
   deploy:
     name: Deploy
@@ -19,7 +19,7 @@ jobs:
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@v0
       with:
-        install_components: "beta"
+        install_components: beta
     - name: build and push
       id: build_push
       uses: ./.github/actions/build_push_image
