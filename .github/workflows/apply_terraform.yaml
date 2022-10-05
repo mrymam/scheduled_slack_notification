@@ -36,4 +36,4 @@ jobs:
         working-directory: ./terraform/
         run: make apply-all
         env:
-           GOOGLE_CREDENTIALS: "${{ secrets.GCP_CREDENTIALS }}"
+          GOOGLE_CREDENTIALS: "${{ secrets.GCP_CREDENTIALS }}"
