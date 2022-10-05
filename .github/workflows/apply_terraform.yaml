@@ -30,6 +30,10 @@ jobs:
       - name: Init
         working-directory: ./terraform/
         run: make init-all
+        env:
+          GOOGLE_CREDENTIALS: "${{ secrets.GCP_CREDENTIALS }}"
       - name: Apply
         working-directory: ./terraform/
         run: make apply-all
+        env:
+           GOOGLE_CREDENTIALS: "${{ secrets.GCP_CREDENTIALS }}"
