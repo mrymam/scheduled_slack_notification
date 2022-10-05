@@ -13,7 +13,7 @@ module "jobs" {
   for_each = {
     for d in local.schedules : d.name => {
       name = d.name
-      resource_name = "${var.common_prefix}${d.name}"
+      resource_name = "${local.common_prefix}${d.name}"
     }
   }
 
