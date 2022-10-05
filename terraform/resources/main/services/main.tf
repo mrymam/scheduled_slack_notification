@@ -1,5 +1,13 @@
 locals {
-  services = ["cloudbuild.googleapis.com", "secretmanager.googleapis.com", "secretmanager.googleapis.com", "cloudscheduler.googleapis.com", "run.googleapis.com", "containerregistry.googleapis.com"]
+  services = [
+    "cloudbuild.googleapis.com",
+    "secretmanager.googleapis.com",
+    "secretmanager.googleapis.com",
+    "cloudscheduler.googleapis.com",
+    "run.googleapis.com",
+    "containerregistry.googleapis.com",
+    "compute.googleapis.com",
+  ]
 }
 
 resource "google_project_service" "services" {
