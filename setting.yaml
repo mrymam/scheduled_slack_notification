@@ -13,11 +13,9 @@ schedules:
   - name: "weekly"
     description: "every Monday at 9:00"
     cron: "0 9 * * 1"
-    secrets:
-      SLACK_WEBHOOK_URL: "slack-webhook-url"
 
 secrets:
-  - slack-webhook-url
+  - SLACK_WEBHOOK_URL: slack-webhook-url
 
 terraform:
   common_prefix: "slack-notification-"

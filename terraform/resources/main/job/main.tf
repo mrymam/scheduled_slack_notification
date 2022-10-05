@@ -14,9 +14,6 @@ module "jobs" {
     for d in local.schedules : d.name => {
       name = d.name
       resource_name = "${var.common_prefix}${d.name}"
-      secrets = {
-        for key, secret in d.secrets : key => "${local.common_prefix}${secret}"
-      }
     }
   }
 
@@ -29,5 +26,7 @@ module "jobs" {
     "GO_ENV": "prod"
     "GCP_PROJECT_ID": local.project,
   }
-  secrets = each.value.secrets
+  secrets = {
+    for key, secret in local.secrets : key => "${local.common_prefix}${secret}"
+  }
 }

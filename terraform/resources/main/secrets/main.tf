@@ -1,6 +1,6 @@
 resource "google_secret_manager_secret" "secrets" {
   for_each = {
-    for d in local.secrets : d => d
+    for key, secret in local.secrets : key => secret
   }
 
   secret_id   = "${local.common_prefix}${each.value}"
