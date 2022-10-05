@@ -1,0 +1,22 @@
+name: terraform-apply-all
+
+on:
+  pull_request:
+    paths:
+      - setting.yaml
+
+jobs:
+  apply:
+    name: Apply
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: update github actions
+        run: make update-github-actions
+      - name: check
+        run: |
+          if ! git diff --exit-code --quiet
+          then
+            echo "prease run `make update-github-actions` command"
+          fi
