@@ -20,5 +20,5 @@ jobs:
         run: |
           if ! git diff --exit-code --quiet
           then
-            echo "prease run `make update-github-actions` command"
+            echo "prease run `make update-github-actions` command" 2>/dev/null
           fi
