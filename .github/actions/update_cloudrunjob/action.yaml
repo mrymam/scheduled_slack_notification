@@ -1,0 +1,17 @@
+inputs:
+  jobname:
+    description: "jobname"
+    required: true
+  project:
+    description: "project"
+    required: true
+  region:
+    description: "region"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Update Cloud Run Job
+      run: |
+        gcloud beta run jobs update ${{ inputs.jobname }} --region ${{ inputs.region }} --project ${{ inputs.project }}
+      shell: bash
