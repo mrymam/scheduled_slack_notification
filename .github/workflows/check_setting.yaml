@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - uses: vmware-tanzu/carvel-setup-action@v1
       - name: update github actions
-        uses: vmware-tanzu/carvel-setup-action@v1
         run: |
           make update-github-actions
       - name: check
