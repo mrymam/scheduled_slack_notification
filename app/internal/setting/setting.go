@@ -8,6 +8,7 @@ type Notification struct {
 	Name       string   `yaml:"name"`
 	WebhookURL string   `yaml:"webhook_url"`
 	Schedule   string   `yaml:"schedule"`
+	Template   string   `yaml:"template"`
 	Metrics    []Metric `yaml:"metrics"`
 }
 

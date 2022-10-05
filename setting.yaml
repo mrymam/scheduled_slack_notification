@@ -2,6 +2,7 @@ notifications:
   - name: "weekly_report_fourkeys"
     webhook_url: "${SLACK_WEBHOOK_URL}"
     schedule: "weekly"
+    template: "sample.md"
     metrics:
       - name: "frequency"
         description: "deployments frequency"
