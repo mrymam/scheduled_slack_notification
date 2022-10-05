@@ -1,9 +1,9 @@
 module "image" {
   source = "../../../modules/image_registory"
 
-  project    = var.project
-  region     = var.region
-  image_name = "${var.common_prefix}notification"
+  project    = local.project
+  region     = local.region
+  image_name = "${local.common_prefix}notification"
   build_path = "./sample"
-  gcr_location = var.gcr_location
+  gcr_location = local.gcr_location
 }

@@ -1,4 +1,4 @@
 resource "google_project_service" "project" {
-  project = var.project
+  project = local.project
   service = "secretmanager.googleapis.com"
 }

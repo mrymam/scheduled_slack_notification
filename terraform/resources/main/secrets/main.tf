@@ -3,7 +3,7 @@ resource "google_secret_manager_secret" "secrets" {
     for d in local.secrets : d => d
   }
 
-  secret_id   = "${var.common_prefix}${each.value}"
+  secret_id   = "${local.common_prefix}${each.value}"
 
   replication {
     automatic = true
