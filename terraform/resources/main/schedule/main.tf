@@ -1,16 +1,6 @@
 data "google_compute_default_service_account" "default" {
 }
 
-resource "google_project_iam_member" "secret" {
-  project = local.project
-  role    = "roles/secretmanager.secretAccessor"
-  member  = "serviceAccount:${data.google_compute_default_service_account.default.email}"
-
-  provisioner "local-exec" {
-    command = "sleep 15"
-  }
-}
-
 resource "google_cloud_scheduler_job" "schedules" {
   for_each = {
     for d in local.schedules : d.name => {
