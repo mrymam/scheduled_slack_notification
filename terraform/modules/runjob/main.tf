@@ -14,7 +14,7 @@ module "gcloud" {
   upgrade       = false
 
   create_cmd_entrypoint  = "gcloud"
-  create_cmd_body        = "beta run jobs create ${var.jobname} --image=${var.image_url} --set-env-vars=${local.env_vars_str} --set-secrets=${local.secrets_str} --project ${var.project} --region ${var.region} --quiet"
+  create_cmd_body        = "beta run jobs create ${var.jobname} --quiet --image=${var.image_url} --set-env-vars=${local.env_vars_str} --set-secrets=${local.secrets_str} --project ${var.project} --region ${var.region}"
   destroy_cmd_entrypoint = "gcloud"
-  destroy_cmd_body       = "beta run jobs delete ${var.jobname} --project ${var.project} --region ${var.region} --quiet"
+  destroy_cmd_body       = "beta run jobs delete ${var.jobname} --quiet --project ${var.project} --region ${var.region}"
 }
