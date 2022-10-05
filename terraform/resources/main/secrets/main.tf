@@ -3,6 +3,10 @@ resource "google_secret_manager_secret" "secrets" {
 
   secret_id   = "${local.common_prefix}${each.value}"
 
+  provisioner "local-exec" {
+    command = "sleep 10"
+  }
+
   replication {
     automatic = true
   }
