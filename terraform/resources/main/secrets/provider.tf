@@ -1,10 +1,11 @@
 provider "google" {
-  project = var.project
-  region  = var.region
+  project = local.project
+  region  = local.region
 }
 
 terraform {
   backend "gcs" {
+    bucket = local.bucket
     prefix = "terraform/main/secrets"
   }
 }

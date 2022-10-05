@@ -2,7 +2,7 @@ data "terraform_remote_state" "image" {
   backend = "gcs"
 
   config = {
-    bucket = var.bucket
+    bucket = local.bucket
     prefix = "terraform/main/image"
     # region = var.region
   }

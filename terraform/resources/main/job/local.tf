@@ -1,3 +1,10 @@
 locals {
-  schedules = yamldecode(file("../../../../setting/setting.yaml"))["schedules"]
+  vars = yamldecode(file("../../../../setting.yaml"))
+  tf = local.vars["terraform"]
+
+  schedules     = local.vars["schedules"]
+  project       = local.tf["project"]
+  region        = local.tf["region"]
+  common_prefix = local.tf["common_prefix"]
+  bucket        = local.tf["bucket"]
 }
