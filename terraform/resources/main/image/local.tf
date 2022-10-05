@@ -5,5 +5,4 @@ locals {
   region        = local.tf["region"]
   gcr_location  = local.tf["gcr_location"]
   common_prefix = local.tf["common_prefix"]
-  bucket        = local.tf["bucket"]
 }

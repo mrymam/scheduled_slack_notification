@@ -4,5 +4,4 @@ locals {
 
   project       = local.tf["project"]
   region        = local.tf["region"]
-  bucket        = local.tf["bucket"]
 }

@@ -5,7 +5,6 @@ provider "google" {
 
 terraform {
   backend "gcs" {
-    bucket = local.bucket
     prefix = "terraform/main/job"
   }
 }

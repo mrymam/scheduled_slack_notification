@@ -27,6 +27,9 @@ jobs:
         with:
           terraform_version: 1.2.4
           terraform_wrapper: false
+      - name: Init
+        working-directory: ./terraform/
+        run: make init-all
       - name: Apply
         working-directory: ./terraform/
         run: make apply-all

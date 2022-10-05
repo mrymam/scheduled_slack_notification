@@ -6,5 +6,4 @@ locals {
   project       = local.tf["project"]
   region        = local.tf["region"]
   common_prefix = local.tf["common_prefix"]
-  bucket        = local.tf["bucket"]
 }
