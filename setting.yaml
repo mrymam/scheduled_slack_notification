@@ -16,7 +16,7 @@ schedules:
     cron: "0 9 * * 1"
 
 secrets:
-  - SLACK_WEBHOOK_URL: slack-webhook-url
+  SLACK_WEBHOOK_URL: slack-webhook-url
 
 terraform:
   common_prefix: "slack-notification-"
