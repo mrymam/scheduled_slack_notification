@@ -25,12 +25,12 @@ jobs:
       id: build_push
       uses: ./.github/actions/build_push_image
       with:
-        image_url: gcr.io/slack-notification/slack-notification-notification
+        image_url: gcr.io/slack-notification-364604/slack-notification-notification
         dockerfile_path: ./app/docker/Dockerfile
         build_path: .
     - name: update cloud run job of weekly
       uses: ./.github/actions/update_cloudrunjob
       with:
         jobname: slack-notification-weekly
-        project: slack-notification
+        project: slack-notification-364604
         region: asia-northeast1
