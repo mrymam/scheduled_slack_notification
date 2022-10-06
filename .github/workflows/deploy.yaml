@@ -21,6 +21,8 @@ jobs:
       uses: google-github-actions/setup-gcloud@v0
       with:
         install_components: beta
+    - name: Configure docker to use the gcloud cli
+      run: gcloud auth configure-docker --quiet
     - name: build and push
       id: build_push
       uses: ./.github/actions/build_push_image
