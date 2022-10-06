@@ -32,6 +32,6 @@ runs:
         IMAGE_TAG: ${{ github.sha }}
       id: push-image
       run: |
-        docker push -a ${{ inputs.image_url }}:$IMAGE_TAG
+        docker push ${{ inputs.image_url }}:$IMAGE_TAG
         echo "::set-output name=image::${{ inputs.image_url }}:$IMAGE_TAG"
       shell: bash
